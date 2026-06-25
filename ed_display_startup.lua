@@ -1,4 +1,4 @@
-local PROGRAM_URL = "https://raw.githubusercontent.com/lechrisved/mc-ed-tracker/refs/heads/main/ed_display"
+local PROGRAM_URL = "https://raw.githubusercontent.com/lechrisved/mc-ed-tracker/refs/heads/main/ed_display.lua"
 local PROGRAM_NAME = "ed_display"
 
 local function clear()
