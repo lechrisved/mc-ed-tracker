@@ -153,6 +153,7 @@ local function drawSmallBoard(patients, width, height)
     monitor.write(string.rep("-", width))
 
     local y = 6
+    local rowsShown = 0
 
     for _, patient in ipairs(patients) do
         if y > height then
@@ -161,20 +162,21 @@ local function drawSmallBoard(patients, width, height)
 
         local line =
             tostring(patient.bed or "") ..
-            " " ..
+            "  " ..
             tostring(patient.name or "") ..
-            " " ..
+            "  " ..
             tostring(patient.status or "")
 
         monitor.setCursorPos(1, y)
         monitor.write(fitText(line, width))
 
         y = y + 1
+        rowsShown = rowsShown + 1
     end
 
-    if #patients > height - 5 then
+    if #patients > rowsShown then
         monitor.setCursorPos(1, height)
-        monitor.write(fitText("+" .. tostring(#patients - (height - 5)) .. " more...", width))
+        monitor.write(fitText("+" .. tostring(#patients - rowsShown) .. " more...", width))
     end
 end
 
@@ -187,11 +189,11 @@ local function drawMediumBoard(patients, width, height)
 
     monitor.setCursorPos(1, 4)
     monitor.write(
-        fitText("BED", 6) ..
-        fitText("NAME", 14) ..
-        fitText("AREA", 11) ..
-        fitText("ACUITY", 9) ..
-        fitText("STATUS", width - 40)
+        fitText("BED", 7) .. " " ..
+        fitText("NAME", 15) .. " " ..
+        fitText("AREA", 12) .. " " ..
+        fitText("ACUITY", 9) .. " " ..
+        fitText("STATUS", width - 47)
     )
 
     monitor.setCursorPos(1, 5)
@@ -207,11 +209,11 @@ local function drawMediumBoard(patients, width, height)
 
         monitor.setCursorPos(1, y)
         monitor.write(
-            fitText(patient.bed, 6) ..
-            fitText(patient.name, 14) ..
-            fitText(patient.area, 11) ..
-            fitText(patient.acuity, 9) ..
-            fitText(patient.status, width - 40)
+            fitText(patient.bed, 7) .. " " ..
+            fitText(patient.name, 15) .. " " ..
+            fitText(patient.area, 12) .. " " ..
+            fitText(patient.acuity, 9) .. " " ..
+            fitText(patient.status, width - 47)
         )
 
         y = y + 1
@@ -238,13 +240,13 @@ local function drawLargeBoard(patients, width, height)
 
     monitor.setCursorPos(1, 4)
     monitor.write(
-        fitText("HN", 15) ..
-        fitText("BED", 7) ..
-        fitText("NAME", 16) ..
-        fitText("AGE", 5) ..
-        fitText("AREA", 12) ..
-        fitText("ACUITY", 9) ..
-        fitText("STATUS", width - 64)
+        fitText("HN", 17) .. " " ..
+        fitText("BED", 8) .. " " ..
+        fitText("NAME", 16) .. " " ..
+        fitText("AGE", 5) .. " " ..
+        fitText("AREA", 12) .. " " ..
+        fitText("ACUITY", 9) .. " " ..
+        fitText("STATUS", width - 73)
     )
 
     monitor.setCursorPos(1, 5)
@@ -260,13 +262,13 @@ local function drawLargeBoard(patients, width, height)
 
         monitor.setCursorPos(1, y)
         monitor.write(
-            fitText(patient.hospitalNo, 15) ..
-            fitText(patient.bed, 7) ..
-            fitText(patient.name, 16) ..
-            fitText(patient.age, 5) ..
-            fitText(patient.area, 12) ..
-            fitText(patient.acuity, 9) ..
-            fitText(patient.status, width - 64)
+            fitText(patient.hospitalNo, 17) .. " " ..
+            fitText(patient.bed, 8) .. " " ..
+            fitText(patient.name, 16) .. " " ..
+            fitText(patient.age, 5) .. " " ..
+            fitText(patient.area, 12) .. " " ..
+            fitText(patient.acuity, 9) .. " " ..
+            fitText(patient.status, width - 73)
         )
 
         y = y + 1
